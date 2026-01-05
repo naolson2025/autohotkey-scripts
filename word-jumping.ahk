@@ -2,7 +2,7 @@
 #SingleInstance Force
 
 ; Apply the following hotkeys only to Google Chrome and VS Code
-#HotIf WinActive("ahk_exe chrome.exe") || WinActive("ahk_exe Code.exe") || WinActive("ahk_exe Notion.exe") || WinActive("ahk_exe Raycast.exe")
+#HotIf WinActive("ahk_exe chrome.exe") || WinActive("ahk_exe Code.exe") || WinActive("ahk_exe Notion.exe") || WinActive("ahk_exe Raycast.exe") || WinActive("ahk_exe Antigravity.exe")
 
 ; Alt + Left/Right to jump words
 !Left::Send "^{Left}"
