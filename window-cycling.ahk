@@ -1,49 +1,36 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
 
-; === Settings ===
-cycleTimeout := 600 ; milliseconds before cycle resets
+; Initialize cycle states
+leftCycleState := 0
+rightCycleState := 0
 
-; === State ===
-leftState := 0
-rightState := 0
-lastLeftPress := 0
-lastRightPress := 0
-
-; === Left Cycle: Ctrl + Shift + Alt + Left ===
-^+!Left::{
-    global leftState, lastLeftPress, cycleTimeout
-
-    now := A_TickCount
-    if (now - lastLeftPress > cycleTimeout)
-        leftState := 0
-
-    leftState := Mod(leftState + 1, 3)
-    lastLeftPress := now
-
-    if (leftState = 1)
-        Send "^+!{F5}"
-    else if (leftState = 2)
-        Send "^+!{F6}"
-    else if (leftState = 0)
-        Send "^+!{F7}"
+; Left Cycle: F5 -> F6 -> F7
+; Triggered by Hyper + Left Arrow (Ctrl + Shift + Alt + Left)
+^!+Left::
+{
+    global leftCycleState
+    leftCycleState := Mod(leftCycleState, 3) + 1 ; Cycles 1 -> 2 -> 3 -> 1
+    
+    if (leftCycleState = 1)
+        Send "^!+{F7}"
+    else if (leftCycleState = 2)
+        Send "^!+{F6}"
+    else
+        Send "^!+{F5}"
 }
 
-; === Right Cycle: Ctrl + Shift + Alt + Right ===
-^+!Right::{
-    global rightState, lastRightPress, cycleTimeout
-
-    now := A_TickCount
-    if (now - lastRightPress > cycleTimeout)
-        rightState := 0
-
-    rightState := Mod(rightState + 1, 3)
-    lastRightPress := now
-
-    if (rightState = 1)
-        Send "^+!{F12}"
-    else if (rightState = 2)
-        Send "^+!{F11}"
-    else if (rightState = 0)
-        Send "^+!{F10}"
+; Right Cycle: F12 -> F11 -> F10
+; Triggered by Hyper + Right Arrow (Ctrl + Shift + Alt + Right)
+^!+Right::
+{
+    global rightCycleState
+    rightCycleState := Mod(rightCycleState, 3) + 1 ; Cycles 1 -> 2 -> 3 -> 1
+    
+    if (rightCycleState = 1)
+        Send "^!+{F10}"
+    else if (rightCycleState = 2)
+        Send "^!+{F11}"
+    else
+        Send "^!+{F12}"
 }
