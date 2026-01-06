@@ -5,6 +5,7 @@
 leftCycleState := 0
 rightCycleState := 0
 upCycleState := 0
+downCycleState := 0
 
 ; Left Cycle: F5 -> F6 -> F7
 ; Triggered by Hyper + Left Arrow (Ctrl + Shift + Alt + Left)
@@ -49,4 +50,19 @@ upCycleState := 0
         Send "^!+{F2}"
     else
         Send "^!+{F3}"
+}
+
+; Down Cycle: F4 -> F8 -> F9
+; Triggered by Hyper + Down Arrow (Ctrl + Shift + Alt + Down)
+^!+Down::
+{
+    global downCycleState
+    downCycleState := Mod(downCycleState, 3) + 1 ; Cycles 1 -> 2 -> 3 -> 1
+    
+    if (downCycleState = 1)
+        Send "^!+{F4}"
+    else if (downCycleState = 2)
+        Send "^!+{F8}"
+    else
+        Send "^!+{F9}"
 }
