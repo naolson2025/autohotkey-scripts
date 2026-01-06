@@ -17,10 +17,7 @@
         MonitorGet(A_Index, &left, &top, &right, &bottom)
         if (cx >= left && cx < right && cy >= top && cy < bottom)
         {
-            monLeft := left
-            monTop := top
-            monRight := right
-            monBottom := bottom
+            MonitorGetWorkArea(A_Index, &monLeft, &monTop, &monRight, &monBottom)
             break
         }
     }
@@ -29,8 +26,8 @@
     monHeight := monBottom - monTop
 
     ; Desired size
-    winWidth  := 1920
-    winHeight := 1080
+    winWidth  := 1925
+    winHeight := 1085
 
     ; Calculate centered position on that monitor
     x := monLeft + (monWidth  - winWidth)  // 2
