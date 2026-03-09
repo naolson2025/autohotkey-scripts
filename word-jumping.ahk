@@ -1,8 +1,8 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 #SingleInstance Force
 
 ; Apply the following hotkeys only to Google Chrome and VS Code
-#HotIf WinActive("ahk_exe chrome.exe") || WinActive("ahk_exe Code.exe") || WinActive("ahk_exe Notion.exe") || WinActive("ahk_exe Raycast.exe") || WinActive("ahk_exe Antigravity.exe") || WinActive("ahk_exe warp.exe") || WinActive("ahk_exe ChatGPT.exe")
+#HotIf WinActive("ahk_exe chrome.exe") || WinActive("ahk_exe Code.exe") || WinActive("ahk_exe Notion.exe") || WinActive("ahk_exe Raycast.exe") || WinActive("ahk_exe Antigravity.exe") || WinActive("ahk_exe warp.exe") || WinActive("ahk_exe ChatGPT.exe") || WinActive("ahk_exe codex.exe")
 
 ; Alt + Left/Right to jump words
 !Left::Send "^{Left}"
